@@ -40,7 +40,8 @@ public class Stack<T>{
         }
     }
 
-    private Node top = null;  // Top of the stack
+    private Node top;  // Top of the stack
+    private int count;
 
 
 
@@ -51,6 +52,7 @@ public class Stack<T>{
     public void Stack() {
         //initiate the top of the stack and the count variable
         top = null;
+        count = 0;
 
     }
 
@@ -72,6 +74,7 @@ public class Stack<T>{
     public void push(T number)
     {
         top = new Node(number, top);
+        count++;
 
     }
 
@@ -90,6 +93,7 @@ public class Stack<T>{
         {
             T retValue = top.value;
             top = top.next;
+            count--;
             return retValue;
         }
     }
@@ -110,13 +114,28 @@ public class Stack<T>{
     }
 
     /**
+     * The size method returns the number of content/'items/ currently on the
+     * stack, throws an empty stack exception if there is nothing on the stack
+     *
+     * @return The count of items on the stack
+     */
+    public int size() {
+        //if the stack is empty, throw exception
+        if (empty())
+            throw new IllegalArgumentException("Empty stack!");
+            //otherwise return the count which represents the amount of content
+            //on the stack
+        else
+            return count;
+    }
+
+    /**
      * The toString method concatenates all strings
      * in the queue to give a string representation
      * of the contents of the queue.
      *
      * @return string representation of this queue.
      */
-
     public String toString() {
         StringBuilder sBuilder = new StringBuilder();
 

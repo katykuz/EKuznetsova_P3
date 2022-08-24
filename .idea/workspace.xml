@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80762465-3514-4939-81d8-c6f700a27b63" name="Changes" comment="">
+    <list default="true" id="80762465-3514-4939-81d8-c6f700a27b63" name="Changes" comment="Game runs - formatting needed and card from deal stack to discard stack is pulled every player turn.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Kuznetsova1_P3/GameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Kuznetsova1_P3/GameModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Kuznetsova1_P3/Queue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Kuznetsova1_P3/Queue.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Kuznetsova1_P3/SillyCardGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Kuznetsova1_P3/SillyCardGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Kuznetsova1_P3/Stack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Kuznetsova1_P3/Stack.java" afterDir="false" />
     </list>
@@ -78,8 +77,16 @@
       <option name="presentableId" value="Default" />
       <updated>1660878447796</updated>
       <workItem from="1660878449706" duration="28568000" />
-      <workItem from="1661268629904" duration="1407000" />
+      <workItem from="1661268629904" duration="12074000" />
     </task>
+    <task id="LOCAL-00001" summary="Game runs - formatting needed and card from deal stack to discard stack is pulled every player turn.">
+      <created>1661270461236</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1661270461236</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -95,5 +102,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Game runs - formatting needed and card from deal stack to discard stack is pulled every player turn." />
+    <option name="LAST_COMMIT_MESSAGE" value="Game runs - formatting needed and card from deal stack to discard stack is pulled every player turn." />
   </component>
 </project>

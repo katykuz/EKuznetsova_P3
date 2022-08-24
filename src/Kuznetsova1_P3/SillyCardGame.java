@@ -26,7 +26,6 @@ public class SillyCardGame {
         //welcome message
         welcome();
 
-
         //do-while loop for user to repeat game
         do {
 
@@ -40,20 +39,19 @@ public class SillyCardGame {
             //a winner
             do {
                 //players take turns
-                someoneWonOrTie = playATurn(cardGame);
-                //conclude while loop with a boolean check
-            } while (!someoneWonOrTie);
+                someoneWonOrTie = printPlayATurn(cardGame);
 
+            //conclude while loop with a boolean check
+            } while (!someoneWonOrTie);
 
             //prompt user for repeat of game
             System.out.print("\nRepeat the game? Enter yes to repeat: ");
-            //consume next line character
-            keyboard.nextLine();
+
             //get user input
             repeat = keyboard.nextLine();
+
             //conclude do-while loop with verification of user response
         } while (repeat.equalsIgnoreCase("yes"));
-
 
         //goodbye message
         goodbye();
@@ -62,34 +60,41 @@ public class SillyCardGame {
         keyboard.close();
     }
 
-
     /**
      * Welcome method welcomes the user and introduces the program
      */
     public static void welcome() {
-        //create welcome string
-        String welcome = "Welcome to the Silly Card Game!";
-        //print string in middle of 80 characters
-        System.out.printf("%13s\n", welcome);
-        //print message
-        //TODO: WELCOME MESSAGE
-        System.out.println("This is a game of ...");
+
+        //print welcome message
+        System.out.printf("Welcome to the Silly Card Game!");
+
+        //print welcome message
+        System.out.println("\nThis is a card game simulation where players " +
+                "compare their cards against \nthe card at the top of the " +
+                "discard pile. Players are instructed to take\ncards from" +
+                "the deal pile based on their card. The first player to run\n" +
+                "out of cards is the winner. If the deal and discard pile " +
+                "become empty\nbefore any one has won, it is a tie.");
+
     }
 
     /**
      * goodbye method prints a farewell message and thanks the user
      */
     public static void goodbye() {
+
         //print goodbye message
         System.out.println("\nThanks for playing! Goodbye for now!");
     }
 
     /**
-     * playerTurns method loops between each player...
+     * printPlayATurn method calls the functions necessary to print the game
+     * state, the players' cards, and the discard stack cards as the game loops
+     * between players
      *
      * @return boolean      whether or not there's a winner or a tie
      */
-    public static boolean playATurn(GameModel cardGame) {
+    public static boolean printPlayATurn(GameModel cardGame) {
         //initialize boolean variable to be able to terminate loop
         boolean someoneWonOrTie = false;
 
@@ -104,8 +109,8 @@ public class SillyCardGame {
             System.out.println(cardGame.getPlayerQueue(i));
 
             //print deck stack for comparison
-            System.out.println("Discard pile card:" +
-                    cardGame.drawFromDeckToDiscard());
+            System.out.println("Discard pile card: " +
+                    cardGame.peekAtDiscardStack());
 
             //print players top card
             System.out.println("Your current card: " +
@@ -113,9 +118,6 @@ public class SillyCardGame {
 
             //print card comparison
             System.out.println(cardGame.cardComparison(i));
-
-            //TODO- delete before turn in
-//            cardGame.printStack();
 
             //check if board has winner by calling checkWinner method
             if (cardGame.checkWinner(i)) {
