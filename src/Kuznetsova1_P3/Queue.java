@@ -13,37 +13,45 @@ package Kuznetsova1_P3;
  * @version 1.0
  */
 public class Queue<T> {
+
     /**
      * The Node class holds the functionality of storing values to a node and
      * linking nodes forwards and backwards.
      */
     private class Node {
+
         //holds the Node value
         T value;
+
         //links a node to the next one
         private Node next;
+
         //links a node to the previous one
         private Node prev;
 
 
-        /**
-         * The constructor takes in a value and assigns it null node links.
-         * @param val Value to be added to a node
-         * @param n Reference node to link (next node)
-         * @param p Reference node to link (previous node)
-         */
-        public Node(T val, Node n, Node p) {
-            //variable to hold the value of the node
-            value = val;
-            //successor pointer
-            next = n;
-            //precedent pointer
-            prev = p;
+    /**
+     * The constructor takes in a value and assigns it null node links.
+     * @param val Value to be added to a node
+     * @param n Reference node to link (next node)
+     * @param p Reference node to link (previous node)
+     */
+    public Node(T val, Node n, Node p) {
+
+        //variable to hold the value of the node
+        value = val;
+
+        //successor pointer
+        next = n;
+
+        //precedent pointer
+        prev = p;
         }
     }
 
     private Node head;      //head/front of the list
     private Node tail;      //tail/rear of the list
+
 
     /**
      * The copy method creates a new queue and makes a deep copy of the
@@ -58,17 +66,22 @@ public class Queue<T> {
 
         //create a reference to the top/head of the queue
         Node p = this.head;
+
         //traverse through the entire queue
         while(p != null){
+
             //put the value of each node onto the new queue through the
             //enqueue method
             copyQueue.enqueue(p.value);
+
             //advance the reference
             p = p.next;
+
         }
         //return the new queue
         return copyQueue;
     }
+
 
     /**
      * The empty method returns true/false whether or not the head/top of the
@@ -82,6 +95,7 @@ public class Queue<T> {
         return head == null;
     }
 
+
     /**
      * The method peek returns value at the head of the queue.
      *
@@ -89,13 +103,16 @@ public class Queue<T> {
      * @throws IllegalArgumentException When the queue is empty.
      */
     public T peek() throws IllegalArgumentException {
+
         //if queue is empty, throw an exception
         if (empty())
             throw new IllegalArgumentException("Error! Empty queue!");
+
+        //otherwise return the top/head value
         else
-            //otherwise return the top/head value
             return head.value;
     }
+
 
     /**
      * The dequeue method removes the value at the head/top of the queue by
@@ -106,26 +123,34 @@ public class Queue<T> {
      * @throws IllegalArgumentException if queue is empty
      */
     public T dequeue() throws IllegalArgumentException {
+
         //if the queue is empty, through an error.
         if (empty())
             throw new IllegalArgumentException("Error! Empty queue!");
-            //if not empty
+
+        //if not empty
         else {
+
             //create a variable to hold the head value
             T returnVal = head.value;
+
             //update the head value to be head.next
             head = head.next;
+
             //if the list is now empty, set the tail to null
             if (head == null)
                 tail = null;
-                //if the list is not empty, remove the reverse pointer
+
+            //if the list is not empty, remove the reverse pointer
             else {
                 head.prev = null;
             }
+
             //return the value that was removed
             return returnVal;
         }
     }
+
 
     /**
      * The enqueue method takes in a RenderCommand variable and puts on at the
@@ -135,16 +160,23 @@ public class Queue<T> {
      * @param num    RenderCommand value that will go into the node
      */
     public void enqueue(T num) {
-        //if the queue is empty, create a new node at the head of the queue,
-        //then set the tail equal to the head
+
+        //if the queue is empty
         if (empty()) {
+
+            //create a new node at the head of the queue
             head = new Node (num, null, null);
+
+            //set the tail equal to the head
             tail = head;
-            //if the queue is not empty, add a new node to the end of the queue,
-            // aka at the tail.next, in order to create a pointer from the current
-            //tail, then update tail.next to be the new tail.
+
+        //if the queue is not empty
         } else {
+
+            //add a new node to the end of the queue to create a pointer from the current
             tail.next = new Node (num, null, tail);
+
+            //update tail.next to be the new tail
             tail = tail.next;
         }
     }
@@ -156,6 +188,7 @@ public class Queue<T> {
      * @param q     the queue to be added to the current queue
      */
     public void append(Queue<T> q) {
+
         //create a reference node and set it to the head of the queue
         //to be added (q)
         Node p = q.head;
@@ -163,30 +196,52 @@ public class Queue<T> {
         //traverse through the whole queue/'q' and add each node as a
         //new node at the tail of the current queue
         while (p != null) {
+
             //add to tail of current queue
             this.enqueue(p.value);
+
             //advance the reference node
             p = p.next;
         }
     }
 
     /**
-     * The toString method concatenates all strings
-     * in the queue to give a string representation
-     * of the contents of the queue.
+     * The toString method concatenates all strings in the queue to give a
+     * string representation of the contents of the queue.
      *
      * @return string representation of this queue.
      */
-
     public String toString() {
+
+        //initialize variable to keep track of cards and spaces printed
+        int maxPrint = 0;
+
+        //create a string builder object
         StringBuilder sBuilder = new StringBuilder();
 
-        // Walk down the list and append all values
+        //initialize reference node for traversing
         Node p = head;
+
+        //traverse through the queue and append all values
         while (p != null) {
-            sBuilder.append(p.value + " ");
+
+            //build the string and append (max 5 characters printed)
+            sBuilder.append(p.value + " | ");
+
+            //advance the reference node and print counter
             p = p.next;
+            maxPrint++;
+
+            //start a new line to not exceed 80 characters (80/5 = 16)
+            if (maxPrint == 16) {
+
+                //print new line character
+                sBuilder.append("\n");
+                maxPrint = 0;
+            }
         }
+
+        //return the string
         return sBuilder.toString();
     }
 }

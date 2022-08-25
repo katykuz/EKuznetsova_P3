@@ -6,6 +6,16 @@
 package Kuznetsova1_P3;
 import java.util.*;
 
+/**
+ * The SillyCardGame class starts the Silly Card Game, outputs to the screen
+ * players' cards, the card at the top of the discard stack, the result of
+ * the comparison, the action for the player, and the result of the game! The
+ * class also asks if the user wants to play the game again and reads input
+ * from the keyboard.
+ *
+ * @Ekaterina Kuznetsova
+ * @version 1.0
+ */
 public class SillyCardGame {
 
     /**
@@ -15,18 +25,20 @@ public class SillyCardGame {
      * and a goodbye method.
      *
      * @param args A string array containing the command line arguments.
+     * @throws IllegalArgumentException when queue or stack is empty
      */
-    public static void main(String[] args) {
+    public static void main(String[] args)
+            throws IllegalArgumentException{
 
         //create scanner object for user input
         Scanner keyboard = new Scanner(System.in);
+
         //declare variable to hold user response
         String repeat;
 
         //welcome message
         welcome();
 
-        //do-while loop for user to repeat game
         do {
 
             //create a GameModel object
@@ -38,6 +50,7 @@ public class SillyCardGame {
             //begin do-while loop so players keep taking turns until
             //a winner
             do {
+
                 //players take turns
                 someoneWonOrTie = printPlayATurn(cardGame);
 
@@ -45,13 +58,13 @@ public class SillyCardGame {
             } while (!someoneWonOrTie);
 
             //prompt user for repeat of game
-            System.out.print("\nRepeat the game? Enter yes to repeat: ");
+            System.out.print("\nRepeat the game? Enter no to quit: ");
 
             //get user input
             repeat = keyboard.nextLine();
 
-            //conclude do-while loop with verification of user response
-        } while (repeat.equalsIgnoreCase("yes"));
+        //conclude do-while loop with verification of user response
+        } while (!repeat.equalsIgnoreCase("no"));
 
         //goodbye message
         goodbye();
@@ -66,15 +79,15 @@ public class SillyCardGame {
     public static void welcome() {
 
         //print welcome message
-        System.out.printf("Welcome to the Silly Card Game!");
+        System.out.println("*** Welcome to the Silly Card Game! ***");
 
         //print welcome message
         System.out.println("\nThis is a card game simulation where players " +
                 "compare their cards against \nthe card at the top of the " +
-                "discard pile. Players are instructed to take\ncards from" +
+                "discard pile. Players are instructed to take\ncards from " +
                 "the deal pile based on their card. The first player to run\n" +
-                "out of cards is the winner. If the deal and discard pile " +
-                "become empty\nbefore any one has won, it is a tie.");
+                "out of cards is the winner. If the runs out of cards for " +
+                "players to draw,\nthe game is a tie.\n");
 
     }
 
@@ -95,6 +108,7 @@ public class SillyCardGame {
      * @return boolean      whether or not there's a winner or a tie
      */
     public static boolean printPlayATurn(GameModel cardGame) {
+
         //initialize boolean variable to be able to terminate loop
         boolean someoneWonOrTie = false;
 

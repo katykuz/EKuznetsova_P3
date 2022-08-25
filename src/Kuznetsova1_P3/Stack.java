@@ -22,6 +22,7 @@ public class Stack<T>{
     {
         //declare the double variable of the element
         T value;
+
         //declare the succeeding node
         Node next;
 
@@ -34,15 +35,18 @@ public class Stack<T>{
          */
         Node(T val, Node n)
         {
-            //initiate the double variable and the next Node
+            //initiate the double variable
             value = val;
+
+            //initiate the the next Node
             next = n;
         }
     }
 
-    private Node top;  // Top of the stack
-    private int count;
 
+    private Node top;  // Top of the stack
+
+    private int count;  //counter for size of stack
 
 
     /**
@@ -50,21 +54,25 @@ public class Stack<T>{
      * integer to zero when an instance of the class is created
      */
     public void Stack() {
-        //initiate the top of the stack and the count variable
-        top = null;
-        count = 0;
 
+        //initiate the top of the stack
+        top = null;
+
+        //initiate the count variable
+        count = 0;
     }
+
 
     /**
      The empty method checks for an empty stack.
      @return true if stack is empty, false otherwise.
      */
-    public boolean empty()
-    {
+    public boolean empty() {
+
         //return true if the list is empty, false if it is not
         return top == null;
     }
+
 
     /**
      * The push method adds a new item to the stack and increments the count.
@@ -73,10 +81,13 @@ public class Stack<T>{
      */
     public void push(T number)
     {
+        //add a new node to the top of the stack
         top = new Node(number, top);
-        count++;
 
+        //increment count to reflect added node
+        count++;
     }
+
 
     /**
      * The Pop method removes the value at the top of the stack and decrements
@@ -87,16 +98,27 @@ public class Stack<T>{
      */
     public T pop()
     {
+        //if stack is empty, throw an exception
         if (empty())
             throw new IllegalArgumentException("Not enough numbers.");
+
+        //if not empty, remove and return the top value
         else
         {
+            //set the top value to a temporary variable
             T retValue = top.value;
+
+            //update the top value to the second to last one to remove the top
             top = top.next;
+
+            //decrement the count to reflect removed value
             count--;
+
+            //return the removed value
             return retValue;
         }
     }
+
 
     /**
      * The peek method returns the top value on the stack.
@@ -108,10 +130,12 @@ public class Stack<T>{
         //if the stack is empty, throw exception
         if (empty())
             throw new IllegalArgumentException("Empty stack!");
-            //otherwise, return the value at the top of the stack
+
+        //otherwise, return the value at the top of the stack
         else
             return top.value;
     }
+
 
     /**
      * The size method returns the number of content/'items/ currently on the
@@ -120,14 +144,17 @@ public class Stack<T>{
      * @return The count of items on the stack
      */
     public int size() {
+
         //if the stack is empty, throw exception
         if (empty())
             throw new IllegalArgumentException("Empty stack!");
-            //otherwise return the count which represents the amount of content
-            //on the stack
+
+        //otherwise return the count which represents the amount of content
+        //on the stack
         else
             return count;
     }
+
 
     /**
      * The toString method concatenates all strings
@@ -137,15 +164,24 @@ public class Stack<T>{
      * @return string representation of this queue.
      */
     public String toString() {
+
+        //create a string builder object
         StringBuilder sBuilder = new StringBuilder();
 
-        // Walk down the list and append all values
+        //initialize reference node for traversing
         Node p = top;
+
+        //traverse through the stack and append all values
         while (p != null) {
+
+            //build the string and append
             sBuilder.append(p.value + " ");
+
+            //advance the reference node
             p = p.next;
         }
+
+        //return the string
         return sBuilder.toString();
     }
-
 }

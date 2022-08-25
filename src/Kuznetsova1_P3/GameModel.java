@@ -23,16 +23,32 @@ import java.util.*;
 public class GameModel {
     
     //private fields:
+
     //number of players
     private final int NUMBER_OF_PLAYERS;
+
+    //number of cards in a deck
     private final int NUM_CARDS_IN_DECK;
+
+    //number of cards in suit
+    private final int  NUM_CARDS_IN_SUIT;
+
+    //number of suits
+    private final int NUM_OF_SUITS;
+
+    //number of cards given to each player
     private final int NUM_CARDS_PER_PLAYER;
-    private int PlayerVal;
-    //private ArrayList<Integer> playerVal;
+
+    //ArrayList of Queues holding player cards
     private ArrayList<Queue<Integer>> playerCards;
+
+    //an arraylist of total cards (arraylist of 52 integers)
     private ArrayList<Integer> cards;
+
     //create stack objects for deck of cards and discard stack
     private Stack<Integer> dealStack;
+
+    //create stack objects for discard stack
     private Stack<Integer> discardStack;
 
 
@@ -40,9 +56,20 @@ public class GameModel {
      * No-argument constructor initializes the necessary variables for the game.
      */
     public GameModel() {
+
         //initialize number of players
         NUMBER_OF_PLAYERS = 2;
+
+        //initialize number of cards
         NUM_CARDS_IN_DECK = 52;
+
+        //number of cards in one suit
+        NUM_CARDS_IN_SUIT = 13;
+
+        //number of suits
+        NUM_OF_SUITS = 4;
+
+        //initialize number of cards given to each player
         NUM_CARDS_PER_PLAYER = 7;
 
         //initialize the playerCards ArrayList by setting the initial capacity
@@ -62,7 +89,7 @@ public class GameModel {
     
     
     /**
-     * The allocateCards method sets up all the cards to be able to begi the
+     * The allocateCards method sets up all the cards to be able to begin the
      * game; it calls a method to create and shuffle the deal Stack; puts
      * 7 cards into each players' queues; places one starting card into the
      * discard stack from the deal stack.
@@ -102,12 +129,15 @@ public class GameModel {
     private void addShuffleAndPushDeck() {
 
         //add 52 cards to the ArrayList
-        for (int i = 1; i <= NUM_CARDS_IN_DECK; i++) {
-            cards.add(i);
+        for (int i = 1; i <= NUM_OF_SUITS; i++) {
+            for (int j = 1; j <= NUM_CARDS_IN_SUIT; j++)
+                cards.add(j);
         }
 
-        //Shuffle algorithm provided randomizes the cards in ArrayList
+        //create new random class object
         Random rand = new Random();
+
+        //Shuffle algorithm provided randomizes the cards in ArrayList
         for (int i = cards.size(); i > 1; i--) {
             int j = rand.nextInt(i);
             int temp = cards.get(i - 1);
@@ -157,8 +187,9 @@ public class GameModel {
      * of the top card from the discard Stack using the peek method.
      *
      * @return String representing the card value from discard Stack
+     * @throws IllegalArgumentException when stack is empty
      */
-    public String peekAtDiscardStack() {
+    public String peekAtDiscardStack() throws IllegalArgumentException {
 
         //return the string representation of the top card in the discard stack
         return String.valueOf(discardStack.peek());
@@ -170,8 +201,11 @@ public class GameModel {
      *
      * @param playerNum integer value representing the player number
      * @return integer value of head of player queue
+     * @throws IllegalArgumentException when queue is empty
      */
-    public String getPlayerHeadCard(int playerNum) {
+    public String getPlayerHeadCard(int playerNum)
+            throws IllegalArgumentException {
+
         //access the player's head card
         return String.valueOf(playerCards.get(playerNum).peek());
     }
@@ -184,8 +218,10 @@ public class GameModel {
      *
      * @param playerNum     integer value representing the current player
      * @return a String variable stating the result of the comparison
+     * @throws IllegalArgumentException when queue or stack is empty
      */
-    public String cardComparison(int playerNum) {
+    public String cardComparison(int playerNum)
+            throws IllegalArgumentException {
 
         //if the player card is greater than discard card
         if (playerCards.get(playerNum).peek() > discardStack.peek()) {
@@ -249,8 +285,10 @@ public class GameModel {
      * Stack is empty using the empty method of the Stack class; if
      * it is empty, all but the top card from the discard stack are
      * put into the deal stack.
+     *
+     * @throws IllegalArgumentException when stack is empty
      */
-    public void checkDealStackNeedForRefill() {
+    public void checkDealStackNeedForRefill() throws IllegalArgumentException {
 
         //if the deckStack is empty, move all but top value from discard Stack
         if (dealStack.empty()) {
@@ -263,7 +301,6 @@ public class GameModel {
                 dealStack.push(discardStack.pop());
 
                 //keep repeating until the discard Stack is empty
-
             } while (!discardStack.empty());
 
             //put the temporary card value back on the discard Stack
@@ -285,6 +322,7 @@ public class GameModel {
         //check if the player's queue is empty, return true if it is
         if (playerCards.get(playerNum).empty())
             return true;
+
         //if the queue is not empty, return false
         else
             return false;
@@ -300,8 +338,7 @@ public class GameModel {
      */
     public boolean checkTie() {
 
-        //if deal stacks is empty and discard stack is 1,
-        //return true
+        //if deal stacks is empty and discard stack is 1, return true
         return dealStack.empty() && discardStack.size() == 1;
 
     }
@@ -316,6 +353,7 @@ public class GameModel {
      */
     public String winnerMessageFormatted(int playerNum) {
 
+        //return string stating the player that won the game
         return "Player " + (playerNum + 1) + " won the game!";
     }
 
@@ -350,4 +388,5 @@ public class GameModel {
 
     }
 }
+
 
