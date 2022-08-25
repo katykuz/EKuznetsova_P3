@@ -104,9 +104,10 @@ public class GameModel {
             playerCards.add(new Queue<Integer>());
         }
 
-        //put 7 cards into each players' queue
-        for (int i = 0; i < NUMBER_OF_PLAYERS; i++) {
-            for (int j = 0; j < NUM_CARDS_PER_PLAYER; j++)
+        //put 7 cards into each players' queue, loop through all players
+        //before giving more cards to each player
+        for (int i = 0; i < NUM_CARDS_PER_PLAYER; i++) {
+            for (int j = 0; j < NUMBER_OF_PLAYERS; j++)
                 playerCards.get(i).enqueue(dealStack.pop());
         }
 
