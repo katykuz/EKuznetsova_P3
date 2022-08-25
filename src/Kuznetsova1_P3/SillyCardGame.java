@@ -86,8 +86,8 @@ public class SillyCardGame {
                 "compare their cards against \nthe card at the top of the " +
                 "discard pile. Players are instructed to take\ncards from " +
                 "the deal pile based on their card. The first player to run\n" +
-                "out of cards is the winner. If the runs out of cards for " +
-                "players to draw,\nthe game is a tie.\n");
+                "out of cards is the winner. If the game runs out of cards " +
+                "for players\nto draw, the game is a tie.\n");
 
     }
 

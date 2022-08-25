@@ -108,7 +108,7 @@ public class GameModel {
         //before giving more cards to each player
         for (int i = 0; i < NUM_CARDS_PER_PLAYER; i++) {
             for (int j = 0; j < NUMBER_OF_PLAYERS; j++)
-                playerCards.get(i).enqueue(dealStack.pop());
+                playerCards.get(j).enqueue(dealStack.pop());
         }
 
         //pop card off deckStack and push it onto discardStack

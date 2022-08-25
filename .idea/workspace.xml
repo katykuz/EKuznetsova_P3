@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80762465-3514-4939-81d8-c6f700a27b63" name="Changes" comment="Game runs - updated deal card to go to discard once per game, included rare event of 1 card in discard pile and no card in stack, added comments and formatting. Project complete.">
+    <list default="true" id="80762465-3514-4939-81d8-c6f700a27b63" name="Changes" comment="Game runs - updated round robin passing of cards. &#10;Project complete.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Kuznetsova1_P3/GameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Kuznetsova1_P3/GameModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -76,7 +77,7 @@
       <workItem from="1660878449706" duration="28568000" />
       <workItem from="1661268629904" duration="18058000" />
       <workItem from="1661393163538" duration="63000" />
-      <workItem from="1661395749534" duration="10000000" />
+      <workItem from="1661395749534" duration="11280000" />
     </task>
     <task id="LOCAL-00001" summary="Game runs - formatting needed and card from deal stack to discard stack is pulled every player turn.">
       <created>1661270461236</created>
@@ -99,7 +100,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661408979071</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Game runs - updated round robin passing of cards. &#10;Project complete.">
+      <created>1661409407930</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1661409407930</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,6 +127,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Game runs - formatting needed and card from deal stack to discard stack is pulled every player turn." />
     <MESSAGE value="Game runs - updated deal card to go to discard once per game, included rare event of 1 card in discard pile and no card in stack, added comments and formatting. Project complete." />
-    <option name="LAST_COMMIT_MESSAGE" value="Game runs - updated deal card to go to discard once per game, included rare event of 1 card in discard pile and no card in stack, added comments and formatting. Project complete." />
+    <MESSAGE value="Game runs - updated round robin passing of cards. &#10;Project complete." />
+    <option name="LAST_COMMIT_MESSAGE" value="Game runs - updated round robin passing of cards. &#10;Project complete." />
   </component>
 </project>
